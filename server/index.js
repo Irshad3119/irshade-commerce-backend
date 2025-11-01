@@ -10,7 +10,17 @@ const LogModel = require("./model/Log");
 const bcrypt = require("bcryptjs"); // for password encryption
 
 const app = express();
-app.use(cors());
+
+// ✅ Use proper CORS config for frontend
+app.use(cors({
+  origin: [
+    "http://localhost:5173", // for local dev
+    "https://irshade-commerce-frontend.vercel.app", // 🔹 your deployed frontend domain
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+  credentials: true,
+}));
+
 app.use(express.json());
 
 // Connect to MongoDB
@@ -297,7 +307,6 @@ app.delete("/orders/:id", (req, res) => {
     .then(() => res.json({ message: "Order deleted successfully" }))
     .catch((err) => res.status(500).json({ error: "Failed to delete order", details: err }));
 });
-
 
 
 /* ------------------ SERVER START ------------------ */
