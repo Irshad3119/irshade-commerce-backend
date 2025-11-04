@@ -14,7 +14,7 @@ const Login = () => {
     setError("");
 
     try {
-      const res = await axios.post("http://localhost:3001/login", { email, password });
+      const res = await axios.post("https://irshade-commerce-backend.onrender.com/login", { email, password });
 
       if (res.data.success) {
         localStorage.setItem("user", JSON.stringify(res.data.user));

@@ -1,235 +1,3 @@
-// import React, { useState, useEffect } from "react";
-// import axios from "axios";
-// import { FaStar } from "react-icons/fa6";
-// import { useNavigate } from "react-router-dom";
-
-// const Products = () => {
-//   const [products, setProducts] = useState([]);
-//   const navigate = useNavigate();
-
-//   useEffect(() => {
-//     axios
-//       .get("http://localhost:3001/itemgrocery/")
-//       .then((result) => setProducts(result.data))
-//       .catch((err) => console.log(err));
-//   }, []);
-
-//   // Add item to cart
-//    const addToCart = async (data) => {
-//     try {
-//       await axios.post("http://localhost:3001/cart/add", {
-//         name: data.name,
-//         item: data._id,       // store item ID
-//         quantity: data.quantity || 1,
-//         price: data.price,
-//         image: data.image,
-//         category: data.category,
-//       });
-      
-//       navigate("/cart"); // go to cart page
-//     } catch (err) {
-//       console.error("Failed to add item to cart:", err);
-//       alert("Failed to add item to cart");
-//     }
-//   };
-//   return (
-//     <div className="mt-14 mb-12">
-//       <div className="container">
-//         {/* Header section */}
-//         <div className="text-center mb-10 max-w-[600px] mx-auto">
-//           <p data-aos="fade-up" className="text-sm text-primary">
-//             Top Selling Products for you
-//           </p>
-//           <h1 data-aos="fade-up" className="text-3xl font-bold">
-//             Products
-//           </h1>
-//           <p data-aos="fade-up" className="text-xs text-gray-400">
-//             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit
-//             asperiores modi Sit asperiores modi
-//           </p>
-//         </div>
-//         {/* Body section */}
-//         <div>
-//           <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 place-items-center gap-5">
-//             {/* card section */}
-//             {products.map((data) => (
-//               <div
-//                 data-aos="fade-up"
-//                 data-aos-delay={data.aosDelay}
-//                 key={data.id}
-//                 className="space-y-3 bg-white shadow-md p-3 rounded-md flex flex-col justify-between"
-//               >
-//                 <img
-//                   src={data.image}
-//                   alt={data.name}
-//                   className="h-[220px] w-[150px] object-cover rounded-md"
-//                 />
-//                 <div>
-//                   <h3 className="font-semibold">{data.name}</h3>
-//                   <h3 className="font-semibold">₹ {data.price || "0"}</h3>
-//                   <p className="text-sm text-gray-600">{data.color}</p>
-//                   <div className="flex items-center gap-1">
-//                     <FaStar className="text-yellow-400" />
-//                     <span>{data.rating}</span>
-//                   </div>
-//                 </div>
-//                 {/* Add to Cart Button */}
-//                 <button
-//                   onClick={() => addToCart(data)}
-//                   className="mt-3 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-//                 >
-//                   Add To Cart
-//                 </button>
-//               </div>
-//             ))}
-//           </div>
-          
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Products;
-
-
-// import React, { useState, useEffect } from "react";
-// import axios from "axios";
-// import { FaStar, FaHeart } from "react-icons/fa6";
-// import { useNavigate } from "react-router-dom";
-
-// const Products = () => {
-//   const [products, setProducts] = useState([]);
-//   const [wishlist, setWishlist] = useState([]); // Track liked items
-//   const navigate = useNavigate();
-
-//   // Fetch product list
-//   useEffect(() => {
-//     axios
-//       .get("http://localhost:3001/itemgrocery/")
-//       .then((result) => setProducts(result.data))
-//       .catch((err) => console.log(err));
-//   }, []);
-
-//   // Add item to cart
-//   const addToCart = async (data) => {
-//     try {
-//       await axios.post("http://localhost:3001/cart/add", {
-//         name: data.name,
-//         item: data._id,
-//         quantity: data.quantity || 1,
-//         price: data.price,
-//         image: data.image,
-//         category: data.category,
-//       });
-//       navigate("/cart");
-//     } catch (err) {
-//       console.error("Failed to add item to cart:", err);
-//       alert("Failed to add item to cart");
-//     }
-//   };
-
-//   // ✅ Add or Remove item from Wishlist
-//   const toggleWishlist = async (item) => {
-//     try {
-//       const alreadyLiked = wishlist.includes(item._id);
-
-//       if (alreadyLiked) {
-//         // Remove from wishlist (if already liked)
-//         await axios.delete(`http://localhost:3001/wishlist/remove/${item._id}`);
-//         setWishlist(wishlist.filter((id) => id !== item._id));
-//       } else {
-//         // Add to wishlist
-//         await axios.post("http://localhost:3001/wishlist/add", {
-//           name: item.name,
-//           item: item._id,
-//           price: item.price,
-//           image: item.image,
-//         });
-//         setWishlist([...wishlist, item._id]);
-//       }
-//     } catch (err) {
-//       console.error("Wishlist error:", err);
-//       alert("Failed to update wishlist");
-//     }
-//   };
-
-//   return (
-//     <div className="mt-14 mb-12">
-//       <div className="container">
-//         {/* Header section */}
-//         <div className="text-center mb-10 max-w-[600px] mx-auto">
-//           <p data-aos="fade-up" className="text-sm text-primary">
-//             Top Selling Products for you
-//           </p>
-//           <h1 data-aos="fade-up" className="text-3xl font-bold">
-//             Products
-//           </h1>
-//           <p data-aos="fade-up" className="text-xs text-gray-400">
-//             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit
-//             asperiores modi Sit asperiores modi
-//           </p>
-//         </div>
-
-//         {/* Body section */}
-//         <div>
-//           <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 place-items-center gap-5">
-//             {products.map((data) => (
-//               <div
-//                 data-aos="fade-up"
-//                 data-aos-delay={data.aosDelay}
-//                 key={data._id}
-//                 className="relative space-y-3 bg-white shadow-md p-3 rounded-md flex flex-col justify-between"
-//               >
-//                 {/* Wishlist Heart Icon */}
-//                 <button
-//                   onClick={() => toggleWishlist(data)}
-//                   className="absolute bottom-2 right-2"
-//                 >
-//                   <FaHeart
-//                     className={`text-2xl transition-all duration-300 ${
-//                       wishlist.includes(data._id)
-//                         ? "text-red-500 scale-110"
-//                         : "text-gray-400 hover:text-red-400"
-//                     }`}
-//                   />
-//                 </button>
-
-//                 {/* Product Image */}
-//                 <img
-//                   src={data.image}
-//                   alt={data.name}
-//                   className="h-[220px] w-[150px] object-cover rounded-md mx-auto"
-//                 />
-
-//                 {/* Product Details */}
-//                 <div>
-//                   <h3 className="font-semibold">{data.name}</h3>
-//                   <h3 className="font-semibold">₹ {data.price || "0"}</h3>
-//                   <p className="text-sm text-gray-600">{data.color}</p>
-//                   <div className="flex items-center gap-1">
-//                     <FaStar className="text-yellow-400" />
-//                     <span>{data.rating}</span>
-//                   </div>
-//                 </div>
-
-//                 {/* Add to Cart Button */}
-//                 <button
-//                   onClick={() => addToCart(data)}
-//                   className="mt-3 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-//                 >
-//                   Add To Cart
-//                 </button>
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Products;
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FaStar, FaHeart } from "react-icons/fa6";
@@ -246,7 +14,7 @@ const Products = () => {
   // Fetch product list
   useEffect(() => {
     axios
-      .get("http://localhost:3001/itemgrocery/")
+      .get("https://irshade-commerce-backend.onrender.com/itemgrocery/")
       .then((result) => setProducts(result.data))
       .catch((err) => console.log("Failed to fetch products:", err));
   }, []);
@@ -257,7 +25,7 @@ const Products = () => {
       try {
         // Expecting an array of wishlist documents:
         // [{ _id: "wishlistDocId", item: "productId", name, price, ... }, ...]
-        const res = await axios.get("http://localhost:3001/wishlist/");
+        const res = await axios.get("https://irshade-commerce-backend.onrender.com/wishlist/");
         const list = res.data || [];
 
         const ids = new Set();
@@ -284,7 +52,7 @@ const Products = () => {
   // Add item to cart
   const addToCart = async (data) => {
     try {
-      await axios.post("http://localhost:3001/cart/add", {
+      await axios.post("https://irshade-commerce-backend.onrender.com/cart/add", {
         name: data.name,
         item: data._id,
         quantity: data.quantity || 1,
@@ -310,7 +78,7 @@ const Products = () => {
         // Optimistic update
         setWishlistProductIds((prev) => new Set(prev).add(productId));
 
-        const res = await axios.post("http://localhost:3001/wishlist/add", {
+        const res = await axios.post("https://irshade-commerce-backend.onrender.com/wishlist/add", {
           name: item.name,
           item: productId,
           price: item.price,
@@ -353,7 +121,7 @@ const Products = () => {
 
         if (wishlistDocId) {
           // backend route: DELETE /wishlist/remove/:wishlistDocId
-          await axios.delete(`http://localhost:3001/wishlist/remove/${wishlistDocId}`);
+          await axios.delete(`https://irshade-commerce-backend.onrender.com/wishlist/remove/${wishlistDocId}`);
 
           // remove mapping
           setWishlistEntries((prev) => {
@@ -364,7 +132,7 @@ const Products = () => {
         } else {
           // Fallback: call delete with itemId in body (some APIs expect this)
           // axios.delete supports passing a request body via the `data` option
-          await axios.delete("http://localhost:3001/wishlist/remove", {
+          await axios.delete("https://irshade-commerce-backend.onrender.com/wishlist/remove", {
             data: { itemId: productId },
           });
         }

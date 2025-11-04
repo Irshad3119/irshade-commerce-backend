@@ -9,7 +9,7 @@ const TopProducts = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/itemcategory/")
+      .get("https://irshade-commerce-backend.onrender.com/itemcategory/")
       .then((result) => setCategory(result.data))
       .catch((err) => console.log(err));
   }, []);
@@ -17,7 +17,7 @@ const TopProducts = () => {
   // Add item to cart
   const addToCart = async (data) => {
     try {
-      await axios.post("http://localhost:3001/cart/add", {
+      await axios.post("https://irshade-commerce-backend.onrender.com/cart/add", {
         name: data.name,
         item: data._id,       // store item ID
         quantity: data.quantity || 1,

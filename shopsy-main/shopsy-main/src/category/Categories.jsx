@@ -8,7 +8,7 @@ const Categories = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/itemcategory")
+      .get("https://irshade-commerce-backend.onrender.com/itemcategory")
       .then((result) => setCategories(result.data))
       .catch((err) => console.log(err));
   }, []);

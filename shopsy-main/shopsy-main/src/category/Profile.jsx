@@ -28,7 +28,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchUserOrders = async (email) => {
       try {
-        const res = await axios.get(`http://localhost:3001/orders/user/${email}`);
+        const res = await axios.get(`https://irshade-commerce-backend.onrender.com/orders/user/${email}`);
         setOrders(res.data);
       } catch (err) {
         console.error("Error fetching user orders:", err);

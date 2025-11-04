@@ -22,7 +22,7 @@ const Register = () => {
     setError("");
 
     try {
-      const res = await axios.post("http://localhost:3001/register", form);
+      const res = await axios.post("https://irshade-commerce-backend.onrender.com/register", form);
       console.log("Register Response:", res.data);
       if (res.data.success) {
         alert("Registration Successful ✅");

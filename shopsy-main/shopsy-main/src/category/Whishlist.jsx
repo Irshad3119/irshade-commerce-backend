@@ -8,7 +8,7 @@ const Wishlist = () => {
 
   const fetchWishlistItems = async () => {
     try {
-      const response = await axios.get("http://localhost:3001/wishlist");
+      const response = await axios.get("https://irshade-commerce-backend.onrender.com/wishlist");
       setWishlistItems(response.data);
     } catch (err) {
       console.error("Failed to fetch wishlist items:", err);
@@ -21,7 +21,7 @@ const Wishlist = () => {
 
   const removeFromWishlist = async (id) => {
     try {
-      await axios.delete(`http://localhost:3001/wishlist/delete/${id}`);
+      await axios.delete(`https://irshade-commerce-backend.onrender.com/wishlist/delete/${id}`);
       fetchWishlistItems();
     } catch (err) {
       console.error("Failed to remove item:", err);
@@ -30,7 +30,7 @@ const Wishlist = () => {
 
   const moveToCart = async (item) => {
     try {
-      await axios.post("http://localhost:3001/cart/add", {
+      await axios.post("https://irshade-commerce-backend.onrender.com/cart/add", {
         name: item.name,
         item: item.item,
         quantity: 1,
@@ -38,7 +38,7 @@ const Wishlist = () => {
         image: item.image,
         category: item.category,
       });
-      await axios.delete(`http://localhost:3001/wishlist/delete/${item._id}`);
+      await axios.delete(`https://irshade-commerce-backend.onrender.com/wishlist/delete/${item._id}`);
       navigate("/cart");
     } catch (err) {
       console.error("Failed to move item to cart:", err);

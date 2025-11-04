@@ -9,7 +9,7 @@ const CartPage = () => {
   // Fetch cart items
   const fetchCartItems = async () => {
     try {
-      const response = await axios.get("http://localhost:3001/cart");
+      const response = await axios.get("https://irshade-commerce-backend.onrender.com/cart");
       setCartItems(response.data);
     } catch (err) {
       console.error("Failed to fetch cart items:", err);
@@ -19,7 +19,7 @@ const CartPage = () => {
   // Remove single item
   const removeItem = async (id) => {
     try {
-      await axios.delete(`http://localhost:3001/cart/${id}`);
+      await axios.delete(`https://irshade-commerce-backend.onrender.com/cart/${id}`);
       fetchCartItems();
     } catch (err) {
       console.error("Failed to remove item:", err);
@@ -31,7 +31,7 @@ const CartPage = () => {
     try {
       await Promise.all(
         cartItems.map((item) =>
-          axios.delete(`http://localhost:3001/cart/${item._id}`)
+          axios.delete(`https://irshade-commerce-backend.onrender.com/cart/${item._id}`)
         )
       );
       fetchCartItems();

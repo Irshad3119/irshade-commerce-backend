@@ -23,7 +23,7 @@ const OrderList = () => {
   // ✅ Load existing orders
   useEffect(() => {
     axios
-      .get("http://localhost:3001/orders") // ✅ fixed route
+      .get("https://irshade-commerce-backend.onrender.com/orders") // ✅ fixed route
       .then((res) => setOrders(res.data))
       .catch((err) => console.log("Error fetching orders:", err));
   }, []);
@@ -37,7 +37,7 @@ const OrderList = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:3001/orders", formData); // ✅ fixed route
+      await axios.post("https://irshade-commerce-backend.onrender.com/orders", formData); // ✅ fixed route
       alert("✅ Order submitted successfully!");
       navigate("/"); // redirect to orders page
     } catch (error) {
