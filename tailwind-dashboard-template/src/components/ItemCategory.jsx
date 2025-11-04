@@ -10,7 +10,7 @@ const ItemCategory = () => {
   // Fetch categories from backend
   const fetchCategories = () => {
     axios
-      .get("http://localhost:3001/itemcategory") // Make sure backend port matches
+      .get("https://irshade-commerce-backend.onrender.com/itemcategory") // Make sure backend port matches
       .then((res) => setCategories(res.data))
       .catch((err) => console.log("Fetch error:", err));
   };
@@ -23,7 +23,7 @@ const ItemCategory = () => {
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this category?")) {
       axios
-        .delete(`http://localhost:3001/deletecategory/${id}`)
+        .delete(`https://irshade-commerce-backend.onrender.com/deletecategory/${id}`)
         .then(() => {
           setCategories(categories.filter((cat) => cat._id !== id));
         })

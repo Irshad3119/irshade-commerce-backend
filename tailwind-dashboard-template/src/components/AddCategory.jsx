@@ -32,7 +32,7 @@ const AddCategory = () => {
   const Submit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3001/addcategory", { name, description, image  })
+      .post("https://irshade-commerce-backend.onrender.com/addcategory", { name, description, image  })
       .then(() => navigate("/itemcategory"))
       .catch((err) => console.log(err));
   };

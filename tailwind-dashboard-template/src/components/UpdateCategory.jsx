@@ -13,7 +13,7 @@ const UpdateCategory = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/updatecategory/" + id)
+      .get("https://irshade-commerce-backend.onrender.com/updatecategory/" + id)
       .then((res) => {
         setName(res.data.name || "");
         setDescription(res.data.description || "");
@@ -41,7 +41,7 @@ const UpdateCategory = () => {
   const Update = (e) => {
     e.preventDefault();
     axios
-      .put("http://localhost:3001/updatecategory/" + id, { name, description, image  })
+      .put("https://irshade-commerce-backend.onrender.com/updatecategory/" + id, { name, description, image  })
       .then(() => navigate("/itemcategory"))
       .catch((err) => console.log(err));
   };

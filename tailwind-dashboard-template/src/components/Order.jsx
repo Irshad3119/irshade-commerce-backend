@@ -11,7 +11,7 @@ const Order = () => {
   // Function to fetch orders
   const fetchOrders = () => {
     axios
-      .get("http://localhost:3001/orders")
+      .get("https://irshade-commerce-backend.onrender.com/orders")
       .then((res) => setOrders(res.data))
       .catch((err) => console.log("Error fetching orders:", err));
   };
@@ -31,7 +31,7 @@ const Order = () => {
   // ✅ Function to update order status
   const handleStatusChange = (id, newStatus) => {
     axios
-      .put(`http://localhost:3001/orders/${id}/status`, { status: newStatus })
+      .put(`https://irshade-commerce-backend.onrender.com/orders/${id}/status`, { status: newStatus })
       .then(() => fetchOrders())
       .catch((err) => console.log("Error updating status:", err));
   };

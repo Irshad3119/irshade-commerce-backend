@@ -9,14 +9,14 @@ const UsersTable = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/itemgrocery")
+      .get("https://irshade-commerce-backend.onrender.com/itemgrocery")
       .then((result) => setgrocery(result.data))
       .catch((err) => console.log(err));
   }, []);
 
   const handledelete = (id) => {
     axios
-      .delete("http://localhost:3001/deletegrocery/" + id)
+      .delete("https://irshade-commerce-backend.onrender.com/deletegrocery/" + id)
       .then(() => {
         setgrocery(grocery.filter((item) => item._id !== id));
       })
