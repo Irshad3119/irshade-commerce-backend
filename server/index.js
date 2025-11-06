@@ -304,6 +304,7 @@
 //     console.log("Server is running");
 // });
 
+
 // -------------------- IMPORTS --------------------
 const express = require('express');
 const mongoose = require('mongoose');
@@ -327,7 +328,7 @@ app.use(express.json());
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:5174',
-  'https://irshade-commerce-frontend.vercel.app', // ✅ your frontend domain
+  'https://irshade-commerce-backend.onrender.com', // ✅ your frontend domain
 ];
 
 app.use(
